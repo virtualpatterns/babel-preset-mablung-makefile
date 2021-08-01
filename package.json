@@ -13,15 +13,33 @@
     "verbose": true
   },
   "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
+    "overides": [
+      {
+        "include": "./source/**/*.cjs",
+        "presets": [
+          [
+            "@babel/preset-env",
+            {
+              "targets": {
+                "node": "current"
+              }
+            }
+          ]
+        ]
+      },
+      {
+        "exclude": "./source/header/**/*",
+        "plugins": [
+          [
+            "babel-plugin-add-header-comment",
+            {
+              "header": [
+                "!node release/header/index.js"
+              ]
+            }
+          ]
+        ]
+      }
     ]
   },
   "c8": {
@@ -35,7 +53,7 @@
   "description": "TBD",
   "eslintConfig": {},
   "eslintIgnore": [
-    "source/test"
+    "source/test/index.test.cjs"
   ],
   "exports": {
     ".": "./release/index.cjs",
