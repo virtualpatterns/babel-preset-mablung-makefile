@@ -13,9 +13,9 @@
     "verbose": true
   },
   "babel": {
-    "overides": [
+    "overrides": [
       {
-        "include": "./source/**/*.cjs",
+        "include": "source/**/*.cjs",
         "presets": [
           [
             "@babel/preset-env",
@@ -28,7 +28,7 @@
         ]
       },
       {
-        "exclude": "./source/header/**/*",
+        "exclude": "source/header/**/*",
         "plugins": [
           [
             "babel-plugin-add-header-comment",
@@ -51,10 +51,51 @@
     "src": "release"
   },
   "description": "TBD",
-  "eslintConfig": {},
-  "eslintIgnore": [
-    "source/test/index.test.cjs"
-  ],
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "requireConfigFile": false
+    },
+    "plugins": [
+      "eslint-plugin-babel"
+    ],
+    "rules": {
+      "arrow-parens": "error",
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
+      "no-debugger": "warn",
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "no-console": "warn",
+      "no-unused-vars": "warn",
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
+  },
   "exports": {
     ".": "./release/index.cjs",
     "./package.json": "./package.json"
@@ -71,7 +112,6 @@
   "type": "module",
   "version": "0.0.1-1",
   "devDependencies": {
-    "@babel/preset-env": "^7.14.8",
     "@virtualpatterns/mablung-makefile": "0.0.1-94",
     "ava": "^3.15.0"
   },
