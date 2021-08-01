@@ -112,10 +112,10 @@
   "type": "module",
   "version": "0.0.1-1",
   "devDependencies": {
-    "@virtualpatterns/mablung-makefile": "0.0.1-94",
+    "@virtualpatterns/mablung-makefile": "0.0.4",
     "ava": "^3.15.0"
   },
   "peerDependencies": {
-    "@virtualpatterns/mablung-makefile": "0.0.1-94"
+    "@virtualpatterns/mablung-makefile": "0.0.4"
   }
 }
