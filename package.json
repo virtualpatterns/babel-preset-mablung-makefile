@@ -44,7 +44,9 @@
   },
   "c8": {
     "all": true,
-    "exclude": [],
+    "exclude": [
+      "release/header"
+    ],
     "reporter": [
       "html"
     ],
