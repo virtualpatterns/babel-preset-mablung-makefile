@@ -115,7 +115,7 @@
     "postinstall": "npx mablung-makefile update-package"
   },
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "devDependencies": {
     "@virtualpatterns/mablung-makefile": "0.0.10",
     "ava": "^3.15.0"
