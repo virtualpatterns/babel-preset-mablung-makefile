@@ -28,7 +28,11 @@
         ]
       },
       {
-        "exclude": "source/header/**/*",
+        "exclude": [
+          "source/header/**/*",
+          "source/sandbox/**/*",
+          "source/test/**/*"
+        ],
         "plugins": [
           [
             "babel-plugin-add-header-comment",
@@ -111,16 +115,13 @@
     "type": "git",
     "url": "https://github.com/virtualpatterns/babel-preset-mablung-makefile"
   },
-  "scripts": {
-    "postinstall": "npx mablung-makefile update-package"
-  },
   "type": "module",
   "version": "0.0.3",
   "devDependencies": {
-    "@virtualpatterns/mablung-makefile": "0.0.11",
+    "@virtualpatterns/mablung-makefile": "0.0.15",
     "ava": "^3.15.0"
   },
   "peerDependencies": {
-    "@virtualpatterns/mablung-makefile": "0.0.11"
+    "@virtualpatterns/mablung-makefile": "0.0.15"
   }
 }
