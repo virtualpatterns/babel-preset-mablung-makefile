@@ -118,6 +118,7 @@
   "type": "module",
   "version": "0.0.4",
   "devDependencies": {
+    "@babel/core": "^7.15.0",
     "@virtualpatterns/mablung-makefile": "0.0.15",
     "ava": "^3.15.0"
   },
