@@ -118,7 +118,7 @@
     "url": "https://github.com/virtualpatterns/babel-preset-mablung-makefile"
   },
   "type": "module",
-  "version": "0.0.6-1",
+  "version": "0.0.6",
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@virtualpatterns/mablung-makefile": "0.0.17",
