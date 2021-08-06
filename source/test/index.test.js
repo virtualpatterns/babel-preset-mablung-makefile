@@ -2,18 +2,18 @@ import { createRequire as CreateRequire } from 'module'
 import Babel from '@babel/core'
 import Test from 'ava'
 
-import { Package } from './library/package.js'
+import { Package } from '../library/package.js'
 
 const Require = CreateRequire(import.meta.url)
 
-Test('source/index.cjs', async (test) => {
+Test.serial('source/index.sample.cjs', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.cjs',
+    'filename': 'source/index.sample.cjs',
     'presets': [
-      Require.resolve('../index.cjs')
+      Require.resolve('../index.js')
     ]
   }
 
@@ -43,14 +43,14 @@ Test('source/index.cjs', async (test) => {
 
 })
 
-Test('source/index.js', async (test) => {
+Test.serial('source/index.sample.js', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.js',
+    'filename': 'source/index.sample.js',
     'presets': [
-      Require.resolve('../index.cjs')
+      Require.resolve('../index.js')
     ]
   }
 
@@ -73,18 +73,18 @@ Test('source/index.js', async (test) => {
 
 })
 
-Test('source/index.js { header: { exclude: \'...\' } }', async (test) => {
+Test.serial('source/index.sample.cjs { header: { exclude: \'...\' } }', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.cjs',
+    'filename': 'source/index.sample.cjs',
     'presets': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('../index.js'),
         {
           'header': {
-            'exclude': 'source/index.cjs'
+            'exclude': 'source/index.sample.cjs'
           }
         }
       ]
@@ -105,19 +105,19 @@ Test('source/index.js { header: { exclude: \'...\' } }', async (test) => {
 
 })
 
-Test('source/index.js { header: { exclude: [ ... ] } }', async (test) => {
+Test.serial('source/index.sample.js { header: { exclude: [ ... ] } }', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.js',
+    'filename': 'source/index.sample.js',
     'presets': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('../index.js'),
         {
           'header': {
             'exclude': [
-              'source/index.js'
+              'source/index.sample.js'
             ]
           }
         }

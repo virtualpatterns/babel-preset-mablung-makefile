@@ -15,7 +15,9 @@
   "babel": {
     "overrides": [
       {
-        "include": "source/**/*.cjs",
+        "include": [
+          "source/**/*.cjs"
+        ],
         "presets": [
           [
             "@babel/preset-env",
@@ -29,9 +31,7 @@
       },
       {
         "exclude": [
-          "source/header/**/*",
-          "source/sandbox/**/*",
-          "source/test/**/*"
+          "source/header/**/*"
         ],
         "plugins": [
           [
@@ -49,7 +49,8 @@
   "c8": {
     "all": true,
     "exclude": [
-      "release/header"
+      "release/header",
+      "release/sandbox"
     ],
     "reporter": [
       "html"
@@ -103,11 +104,12 @@
     }
   },
   "exports": {
-    ".": "./release/index.cjs",
+    ".": "./release/index.js",
     "./package.json": "./package.json"
   },
   "files": [
-    "release/index.cjs"
+    "release/library",
+    "release/index.js"
   ],
   "license": "GPL-3.0+",
   "name": "@virtualpatterns/babel-preset-mablung-makefile",
@@ -119,10 +121,10 @@
   "version": "0.0.5",
   "devDependencies": {
     "@babel/core": "^7.15.0",
-    "@virtualpatterns/mablung-makefile": "0.0.15",
+    "@virtualpatterns/mablung-makefile": "0.0.17",
     "ava": "^3.15.0"
   },
-  "peerDependencies": {
-    "@virtualpatterns/mablung-makefile": "0.0.15"
+  "dependencies": {
+    "@pwn/is": "^1.0.2"
   }
 }
