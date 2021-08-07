@@ -1,7 +1,8 @@
-import { Package } from './library/package.js'
-import Is from '@pwn/is'
+const Is = require('@pwn/is')
 
-export default (api, option) => {
+const Package = require('../package.json')
+
+module.exports = function(api, option) {
 
   // "babel": {
   //   "overrides": [

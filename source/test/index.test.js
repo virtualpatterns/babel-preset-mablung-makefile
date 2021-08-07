@@ -2,18 +2,55 @@ import { createRequire as CreateRequire } from 'module'
 import Babel from '@babel/core'
 import Test from 'ava'
 
-import { Package } from '../library/package.js'
+import { Package } from './library/package.js'
 
 const Require = CreateRequire(import.meta.url)
 
-Test.serial('source/index.sample.cjs', async (test) => {
+Test('source/index.sample.cjs (using transformSync)', (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
     'filename': 'source/index.sample.cjs',
     'presets': [
-      Require.resolve('../index.js')
+      Require.resolve('../index.cjs')
+    ]
+  }
+
+  let { code: actualCodeOut } = Babel.transformSync(codeIn, option)
+  let expectedCodeOut = '/**\n' +
+                        '* \n' +
+                        '* Package:     @virtualpatterns/babel-preset-mablung-makefile\n' +
+                        '* Description: TBD\n' +
+                        `* Version:     ${Package.version}\n` +
+                        '* License:     GPL-3.0+\n' +
+                        '* Author:      virtualpatterns.com <code@virtualpatterns.com> (http://www.virtualpatterns.com)\n' +
+                        '* Repository:  https://github.com/virtualpatterns/babel-preset-mablung-makefile\n' +
+                        '* Source:      undefined\n' +
+                        '* \n' +
+                        '**/\n' +
+                        '"use strict";\n' +
+                        '\n' +
+                        'Object.defineProperty(exports, "__esModule", {\n' +
+                        '  value: true\n' +
+                        '});\n' +
+                        'exports.OK = void 0;\n' +
+                        '\n' +
+                        'const OK = true;\n' +
+                        'exports.OK = OK;'
+
+  test.is(actualCodeOut, expectedCodeOut)
+
+})
+
+Test('source/index.sample.cjs (using transformAsync)', async (test) => {
+
+  let codeIn = 'export const OK = true'
+  let option = {
+    'babelrc': false,
+    'filename': 'source/index.sample.cjs',
+    'presets': [
+      Require.resolve('../index.cjs')
     ]
   }
 
@@ -43,14 +80,14 @@ Test.serial('source/index.sample.cjs', async (test) => {
 
 })
 
-Test.serial('source/index.sample.js', async (test) => {
+Test('source/index.sample.js', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
     'filename': 'source/index.sample.js',
     'presets': [
-      Require.resolve('../index.js')
+      Require.resolve('../index.cjs')
     ]
   }
 
@@ -73,7 +110,7 @@ Test.serial('source/index.sample.js', async (test) => {
 
 })
 
-Test.serial('source/index.sample.cjs { header: { exclude: \'...\' } }', async (test) => {
+Test('source/index.sample.cjs { header: { exclude: \'...\' } }', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
@@ -81,7 +118,7 @@ Test.serial('source/index.sample.cjs { header: { exclude: \'...\' } }', async (t
     'filename': 'source/index.sample.cjs',
     'presets': [
       [
-        Require.resolve('../index.js'),
+        Require.resolve('../index.cjs'),
         {
           'header': {
             'exclude': 'source/index.sample.cjs'
@@ -105,7 +142,7 @@ Test.serial('source/index.sample.cjs { header: { exclude: \'...\' } }', async (t
 
 })
 
-Test.serial('source/index.sample.js { header: { exclude: [ ... ] } }', async (test) => {
+Test('source/index.sample.js { header: { exclude: [ ... ] } }', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
@@ -113,7 +150,7 @@ Test.serial('source/index.sample.js { header: { exclude: [ ... ] } }', async (te
     'filename': 'source/index.sample.js',
     'presets': [
       [
-        Require.resolve('../index.js'),
+        Require.resolve('../index.cjs'),
         {
           'header': {
             'exclude': [

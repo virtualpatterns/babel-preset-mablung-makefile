@@ -10,7 +10,8 @@
       "--unhandled-rejections=strict"
     ],
     "require": [],
-    "verbose": true
+    "verbose": true,
+    "workerThreads": false
   },
   "babel": {
     "overrides": [
