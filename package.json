@@ -105,14 +105,15 @@
     }
   },
   "exports": {
-    ".": "./release/index.js",
+    ".": "./release/index.cjs",
     "./package.json": "./package.json"
   },
   "files": [
     "release/library",
-    "release/index.js"
+    "release/index.cjs"
   ],
   "license": "GPL-3.0+",
+  "main": "release/index.cjs",
   "name": "@virtualpatterns/babel-preset-mablung-makefile",
   "repository": {
     "type": "git",
