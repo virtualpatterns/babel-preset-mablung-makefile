@@ -1,16 +1,30 @@
+const Clone = require('clone')
 const Is = require('@pwn/is')
 
 const Package = require('../package.json')
 
-module.exports = function(api, option) {
+module.exports = function (api, option) {
 
-  // "babel": {
+  // {
   //   "overrides": [
   //     {
+  //       "include": [
+  //         "source/**/*.cjs"
+  //       ],
+  //       "presets": [
+  //         [
+  //           "@babel/preset-env",
+  //           {
+  //             "targets": {
+  //               "node": "current"
+  //             }
+  //           }
+  //         ]
+  //       ]
   //     },
   //     {
   //       "exclude": [
-  //         "source/header/**/*",
+  //         "source/header/**/*"
   //       ],
   //       "plugins": [
   //         [
@@ -26,13 +40,25 @@ module.exports = function(api, option) {
   //   ]
   // },
 
-  let configuration = Package.babel
+  let configuration = Clone(Package.babel)
+
+  let name = null
+  name = configuration.overrides[0].presets[0][0]
+
+  // console.log(`configuration.overrides[0].presets[0][0] = require('${name}')`)
+  configuration.overrides[0].presets[0][0] = require(name)
 
   let exclude = null
   exclude = option.header?.exclude || []
   exclude = Is.array(exclude) ? exclude : [ exclude ]
 
+  // console.log(`configuration.overrides[1].exclude.push('${exclude.join('\', \'')}')`)
   configuration.overrides[1].exclude.push(...exclude)
+
+  name = configuration.overrides[1].plugins[0][0]
+
+  // console.log(`configuration.overrides[1].plugins[0][0] = require('${name}')`)
+  configuration.overrides[1].plugins[0][0] = require(name)
 
   return configuration
 

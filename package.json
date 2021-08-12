@@ -109,7 +109,6 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "release/library",
     "release/index.cjs"
   ],
   "license": "GPL-3.0+",
@@ -123,10 +122,11 @@
   "version": "0.0.9",
   "devDependencies": {
     "@babel/core": "^7.15.0",
-    "@virtualpatterns/mablung-makefile": "0.0.18",
+    "@virtualpatterns/mablung-makefile": "0.0.19",
     "ava": "^3.15.0"
   },
   "dependencies": {
-    "@pwn/is": "^1.0.2"
+    "@pwn/is": "^1.0.2",
+    "clone": "^2.1.2"
   }
 }

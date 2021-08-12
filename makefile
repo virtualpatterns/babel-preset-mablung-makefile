@@ -6,7 +6,9 @@ endif
 include $(mablung-makefile-path)
 
 ifndef current-folder
+
 pre-build::
-	@npx shx echo update .... package.json
+	$(if $(verbose),@echo update .... package.json)
 	@npx mablung-makefile update-package
+
 endif
