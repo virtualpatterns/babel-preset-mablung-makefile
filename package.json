@@ -9,9 +9,10 @@
       "--no-warnings",
       "--unhandled-rejections=strict"
     ],
-    "require": [],
-    "verbose": true,
-    "workerThreads": false
+    "require": [
+      "@virtualpatterns/mablung-makefile/source-map-support"
+    ],
+    "verbose": true
   },
   "babel": {
     "overrides": [
@@ -122,7 +123,7 @@
   "version": "0.0.10",
   "devDependencies": {
     "@babel/core": "^7.15.0",
-    "@virtualpatterns/mablung-makefile": "0.0.19",
+    "@virtualpatterns/mablung-makefile": "0.0.20",
     "ava": "^3.15.0"
   },
   "dependencies": {
