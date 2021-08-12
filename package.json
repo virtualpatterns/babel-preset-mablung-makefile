@@ -123,7 +123,7 @@
   "version": "0.0.10",
   "devDependencies": {
     "@babel/core": "^7.15.0",
-    "@virtualpatterns/mablung-makefile": "0.0.20",
+    "@virtualpatterns/mablung-makefile": "0.0.21",
     "ava": "^3.15.0"
   },
   "dependencies": {
