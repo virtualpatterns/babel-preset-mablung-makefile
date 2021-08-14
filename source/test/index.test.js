@@ -6,12 +6,12 @@ import { Package } from './library/package.js'
 
 const Require = CreateRequire(import.meta.url)
 
-Test('source/index.sample.cjs (using transformSync)', (test) => {
+Test('source/index.cjs (using transformSync)', (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.sample.cjs',
+    'filename': 'source/index.cjs',
     'presets': [
       Require.resolve('../index.cjs')
     ]
@@ -43,12 +43,12 @@ Test('source/index.sample.cjs (using transformSync)', (test) => {
 
 })
 
-Test('source/index.sample.cjs (using transformAsync)', async (test) => {
+Test('source/index.cjs (using transformAsync)', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.sample.cjs',
+    'filename': 'source/index.cjs',
     'presets': [
       Require.resolve('../index.cjs')
     ]
@@ -80,12 +80,12 @@ Test('source/index.sample.cjs (using transformAsync)', async (test) => {
 
 })
 
-Test('source/index.sample.js', async (test) => {
+Test('source/index.js', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.sample.js',
+    'filename': 'source/index.js',
     'presets': [
       Require.resolve('../index.cjs')
     ]
@@ -110,18 +110,18 @@ Test('source/index.sample.js', async (test) => {
 
 })
 
-Test('source/index.sample.cjs { header: { exclude: \'...\' } }', async (test) => {
+Test('source/index.cjs { header: { exclude: \'...\' } }', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.sample.cjs',
+    'filename': 'source/index.cjs',
     'presets': [
       [
         Require.resolve('../index.cjs'),
         {
           'header': {
-            'exclude': 'source/index.sample.cjs'
+            'exclude': 'source/index.cjs'
           }
         }
       ]
@@ -142,19 +142,19 @@ Test('source/index.sample.cjs { header: { exclude: \'...\' } }', async (test) =>
 
 })
 
-Test('source/index.sample.js { header: { exclude: [ ... ] } }', async (test) => {
+Test('source/index.js { header: { exclude: [ ... ] } }', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.sample.js',
+    'filename': 'source/index.js',
     'presets': [
       [
         Require.resolve('../index.cjs'),
         {
           'header': {
             'exclude': [
-              'source/index.sample.js'
+              'source/index.js'
             ]
           }
         }
