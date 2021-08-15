@@ -24,7 +24,7 @@ module.exports = function (api, option) {
   //     },
   //     {
   //       "exclude": [
-  //         "source/header/**/*"
+  //         "source/header/"
   //       ],
   //       "plugins": [
   //         [
@@ -42,24 +42,17 @@ module.exports = function (api, option) {
 
   let configuration = Clone(Package.babel)
 
-  configuration.overrides[1].exclude = []
-
   let name = null
   name = configuration.overrides[0].presets[0][0]
-
-  // console.log(`configuration.overrides[0].presets[0][0] = require('${name}')`)
   configuration.overrides[0].presets[0][0] = require(name)
 
   let exclude = null
   exclude = option.header?.exclude || []
   exclude = Is.array(exclude) ? exclude : [ exclude ]
 
-  // console.log(`configuration.overrides[1].exclude.push('${exclude.join('\', \'')}')`)
-  configuration.overrides[1].exclude.push('source/header', ...exclude)
+  configuration.overrides[1].exclude = ['source/header', ...exclude]
 
   name = configuration.overrides[1].plugins[0][0]
-
-  // console.log(`configuration.overrides[1].plugins[0][0] = require('${name}')`)
   configuration.overrides[1].plugins[0][0] = require(name)
 
   return configuration

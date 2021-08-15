@@ -5,9 +5,9 @@ module.exports = function (api, option) {
   //     {},
   //     {
   //       "exclude": [
-  //         "source/header/**/*",
-  //         "source/sandbox/**/*",
-  //         "source/test/**/*"
+  //         "source/header/",
+  //         "source/sandbox/",
+  //         "source/test/"
   //       ],
   //       "plugins": []
   //     }
