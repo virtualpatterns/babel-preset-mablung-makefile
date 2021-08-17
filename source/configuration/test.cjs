@@ -6,7 +6,7 @@ export function Configuration( /* option */ ) {
       'release/**/test/**/*.test.*'
     ],
     'require': [
-      "@virtualpatterns/mablung-makefile/source-map-support"
+      '@virtualpatterns/mablung-makefile/source-map-support'
     ],
     'verbose': true
   }
