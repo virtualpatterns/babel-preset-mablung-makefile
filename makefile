@@ -8,7 +8,7 @@ include $(mablung-makefile-path)
 ifndef current-folder
 
 pre-build::
-	$(if $(verbose),@echo update .... package.json)
-	@npx mablung-makefile update-package
-
+	$(if $(verbose),@echo update ....  configuration/check.json configuration/compile.json)
+	@npx mablung-makefile update-configuration
+	
 endif
