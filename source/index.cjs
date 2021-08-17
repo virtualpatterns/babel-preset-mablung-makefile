@@ -1,6 +1,7 @@
 const Assert = require('assert')
 const FileSystem = require('fs-extra')
 const Is = require('@pwn/is')
+const Path = require('path')
 
 module.exports = function (api, option) {
 
@@ -28,7 +29,7 @@ module.exports = function (api, option) {
   //   ]
   // },
 
-  let path = `${__dirname}/../../configuration/compile.json`
+  let path = Path.resolve(`${__dirname}/../configuration/compile.json`)
   let configuration = FileSystem.readJsonSync(path, { 'encoding': 'utf-8' })
 
   let name = null
