@@ -1,0 +1,11 @@
+{
+  "all": true,
+  "exclude": [
+    "release/header",
+    "release/sandbox"
+  ],
+  "reporter": [
+    "html"
+  ],
+  "src": "release"
+}

@@ -2,7 +2,7 @@
   "overrides": [
     {
       "include": [
-        "../source/**/*.cjs"
+        "source/**/*.cjs"
       ],
       "presets": [
         [
@@ -17,10 +17,9 @@
     },
     {
       "exclude": [
-        "../source/configuration",
-        "../source/header",
-        "../source/sandbox",
-        "../source/test"
+        "source/header",
+        "source/sandbox",
+        "source/test"
       ],
       "plugins": [
         [

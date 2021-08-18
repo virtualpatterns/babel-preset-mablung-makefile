@@ -6,12 +6,12 @@ import { Package } from './library/package.js'
 
 const Require = CreateRequire(import.meta.url)
 
-Test('source/index.cjs (using transformSync)', (test) => {
+Test('index.cjs (using transformSync)', (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.cjs',
+    'filename': 'source/test/resource/index.cjs',
     'presets': [
       Require.resolve('../index.cjs')
     ]
@@ -39,16 +39,17 @@ Test('source/index.cjs (using transformSync)', (test) => {
                         'const OK = true;\n' +
                         'exports.OK = OK;'
 
+  // test.log(actualCodeOut)
   test.is(actualCodeOut, expectedCodeOut)
 
 })
 
-Test('source/index.cjs (using transformAsync)', async (test) => {
+Test('index.cjs (using transformAsync)', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.cjs',
+    'filename': 'source/test/resource/index.cjs',
     'presets': [
       Require.resolve('../index.cjs')
     ]
@@ -76,16 +77,17 @@ Test('source/index.cjs (using transformAsync)', async (test) => {
                         'const OK = true;\n' +
                         'exports.OK = OK;'
 
+  // test.log(actualCodeOut)
   test.is(actualCodeOut, expectedCodeOut)
 
 })
 
-Test('source/index.js', async (test) => {
+Test('index.js', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.js',
+    'filename': 'source/test/resource/index.js',
     'presets': [
       Require.resolve('../index.cjs')
     ]
@@ -106,22 +108,23 @@ Test('source/index.js', async (test) => {
                         '\n' +
                         'export const OK = true;'
 
+  // test.log(actualCodeOut)
   test.is(actualCodeOut, expectedCodeOut)
 
 })
 
-Test('source/index.cjs { header: { exclude: \'...\' } }', async (test) => {
+Test('index.cjs { header: { exclude: \'...\' } }', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.cjs',
+    'filename': 'source/test/resource/index.cjs',
     'presets': [
       [
         Require.resolve('../index.cjs'),
         {
           'header': {
-            'exclude': 'source/index.cjs'
+            'exclude': 'source/test/resource/index.cjs'
           }
         }
       ]
@@ -138,23 +141,24 @@ Test('source/index.cjs { header: { exclude: \'...\' } }', async (test) => {
                         'const OK = true;\n' +
                         'exports.OK = OK;'
 
+  // test.log(actualCodeOut)
   test.is(actualCodeOut, expectedCodeOut)
 
 })
 
-Test('source/index.js { header: { exclude: [ ... ] } }', async (test) => {
+Test('index.js { header: { exclude: [ ... ] } }', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'babelrc': false,
-    'filename': 'source/index.js',
+    'filename': 'source/test/resource/index.js',
     'presets': [
       [
         Require.resolve('../index.cjs'),
         {
           'header': {
             'exclude': [
-              'source/index.js'
+              'source/test/resource/index.js'
             ]
           }
         }
@@ -165,6 +169,7 @@ Test('source/index.js { header: { exclude: [ ... ] } }', async (test) => {
   let { code: actualCodeOut } = await Babel.transformAsync(codeIn, option)
   let expectedCodeOut = 'export const OK = true;'
 
+  // test.log(actualCodeOut)
   test.is(actualCodeOut, expectedCodeOut)
 
 })

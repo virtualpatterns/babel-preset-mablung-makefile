@@ -7,7 +7,9 @@ Test('(default)', async (test) => {
 
   let unused = await Check(Process.cwd(), {
     'ignoreMatches': [
+      '@babel/eslint-parser',
       '@babel/preset-env',
+      'eslint-plugin-babel',
       'babel-plugin-add-header-comment'
     ],
     'parsers': {
