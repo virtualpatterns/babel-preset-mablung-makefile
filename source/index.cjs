@@ -29,7 +29,7 @@ module.exports = function (api, option) {
   //   ]
   // },
 
-  let path = Path.resolve(`${__dirname}/../.babelrc.json`)
+  let path = Path.resolve(`${__dirname}/../compile.json`)
   let configuration = FileSystem.readJsonSync(path, { 'encoding': 'utf-8' })
 
   let name = null

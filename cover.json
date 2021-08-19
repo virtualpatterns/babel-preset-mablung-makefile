@@ -2,7 +2,8 @@
   "all": true,
   "exclude": [
     "release/header",
-    "release/sandbox"
+    "release/sandbox",
+    "test.cjs"
   ],
   "reporter": [
     "html"
