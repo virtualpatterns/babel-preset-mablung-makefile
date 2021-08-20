@@ -32,14 +32,10 @@ module.exports = function (api, option) {
   let path = Path.resolve(`${__dirname}/../babel.config.json`)
   let configuration = FileSystem.readJsonSync(path, { 'encoding': 'utf-8' })
 
-  let name = null
-
-  name = configuration.overrides[0].presets[0][0]
-  Assert.strictEqual(name, '@babel/preset-env')
+  Assert.strictEqual(configuration.overrides[0].presets[0][0], '@babel/preset-env')
   configuration.overrides[0].presets[0][0] = require('@babel/preset-env')
 
-  name = configuration.overrides[1].plugins[0][0]
-  Assert.strictEqual(name, 'babel-plugin-add-header-comment')
+  Assert.strictEqual(configuration.overrides[1].plugins[0][0], 'babel-plugin-add-header-comment')
   configuration.overrides[1].plugins[0][0] = require('babel-plugin-add-header-comment')
 
   let exclude = null
