@@ -6,7 +6,7 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "compile.json",
+    "babel.config.json",
     "release/index.cjs"
   ],
   "license": "GPL-3.0+",
