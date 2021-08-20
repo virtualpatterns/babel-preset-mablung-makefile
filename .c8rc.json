@@ -3,7 +3,7 @@
   "exclude": [
     "release/header",
     "release/sandbox",
-    "test.cjs"
+    "ava.config.cjs"
   ],
   "reporter": [
     "html"
