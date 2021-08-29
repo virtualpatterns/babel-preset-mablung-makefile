@@ -5,9 +5,7 @@ module.exports = function({ path }) {
     'files': [
       'release/**/test/**/*.test.*'
     ],
-    'require': [
-      '@virtualpatterns/mablung-makefile/source-map-support'
-    ],
+    'require': [],
     'verbose': true
   }
 
