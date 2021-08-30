@@ -6,16 +6,16 @@ import URL from 'url'
 
 import { Package } from './library/package.js'
 
-const FilePath = URL.fileURLToPath(import.meta.url)
-const FolderPath = Path.dirname(FilePath)
 const Require = CreateRequire(import.meta.url)
+const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('release/', 'source/')
+const SourceFolderPath = Path.dirname(SourceFilePath).replace('release/', 'source/')
 
 Test('presets: [ index.cjs ] on index.cjs using transformSync', (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
-    'root': FolderPath,
-    'filename': 'source/test/resource/index.cjs',
+    'root': SourceFolderPath,
+    'filename': `${SourceFolderPath}/index.cjs`,
     'presets': [
       Require.resolve('../index.cjs')
     ]
@@ -52,8 +52,8 @@ Test('presets: [ index.cjs ] on index.cjs using transformAsync', async (test) =>
 
   let codeIn = 'export const OK = true'
   let option = {
-    'root': FolderPath,
-    'filename': 'source/test/resource/index.cjs',
+    'root': SourceFolderPath,
+    'filename': `${SourceFolderPath}/index.cjs`,
     'presets': [
       Require.resolve('../index.cjs')
     ]
@@ -90,8 +90,8 @@ Test('presets: [ index.cjs ] on index.js', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
-    'root': FolderPath,
-    'filename': 'source/test/resource/index.js',
+    'root': SourceFolderPath,
+    'filename': `${SourceFolderPath}/index.js`,
     'presets': [
       Require.resolve('../index.cjs')
     ]
@@ -121,14 +121,14 @@ Test('presets: [ index.cjs, { header: { exclude: \'...\' } } ] on index.cjs', as
 
   let codeIn = 'export const OK = true'
   let option = {
-    'root': FolderPath,
-    'filename': 'source/test/resource/index.cjs',
+    'root': SourceFolderPath,
+    'filename': `${SourceFolderPath}/index.cjs`,
     'presets': [
       [
         Require.resolve('../index.cjs'),
         {
           'header': {
-            'exclude': 'source/test/resource/index.cjs'
+            'exclude': `${SourceFolderPath}/index.cjs`
           }
         }
       ]
@@ -154,15 +154,15 @@ Test('presets: [ index.cjs, { header: { exclude: [ ... ] } } ] on index.js', asy
 
   let codeIn = 'export const OK = true'
   let option = {
-    'root': FolderPath,
-    'filename': 'source/test/resource/index.js',
+    'root': SourceFolderPath,
+    'filename': `${SourceFolderPath}/index.js`,
     'presets': [
       [
         Require.resolve('../index.cjs'),
         {
           'header': {
             'exclude': [
-              'source/test/resource/index.js'
+              `${SourceFolderPath}/index.js`
             ]
           }
         }
