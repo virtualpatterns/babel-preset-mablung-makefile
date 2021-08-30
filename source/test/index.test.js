@@ -1,16 +1,20 @@
 import { createRequire as CreateRequire } from 'module'
 import Babel from '@babel/core'
+import Path from 'path'
 import Test from 'ava'
+import URL from 'url'
 
 import { Package } from './library/package.js'
 
+const FilePath = URL.fileURLToPath(import.meta.url)
+const FolderPath = Path.dirname(FilePath)
 const Require = CreateRequire(import.meta.url)
 
-Test('index.cjs (using transformSync)', (test) => {
+Test('presets: [ index.cjs ] on index.cjs using transformSync', (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
-    'babelrc': false,
+    'root': FolderPath,
     'filename': 'source/test/resource/index.cjs',
     'presets': [
       Require.resolve('../index.cjs')
@@ -44,11 +48,11 @@ Test('index.cjs (using transformSync)', (test) => {
 
 })
 
-Test('index.cjs (using transformAsync)', async (test) => {
+Test('presets: [ index.cjs ] on index.cjs using transformAsync', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
-    'babelrc': false,
+    'root': FolderPath,
     'filename': 'source/test/resource/index.cjs',
     'presets': [
       Require.resolve('../index.cjs')
@@ -82,11 +86,11 @@ Test('index.cjs (using transformAsync)', async (test) => {
 
 })
 
-Test('index.js', async (test) => {
+Test('presets: [ index.cjs ] on index.js', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
-    'babelrc': false,
+    'root': FolderPath,
     'filename': 'source/test/resource/index.js',
     'presets': [
       Require.resolve('../index.cjs')
@@ -113,11 +117,11 @@ Test('index.js', async (test) => {
 
 })
 
-Test('index.cjs { header: { exclude: \'...\' } }', async (test) => {
+Test('presets: [ index.cjs, { header: { exclude: \'...\' } } ] on index.cjs', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
-    'babelrc': false,
+    'root': FolderPath,
     'filename': 'source/test/resource/index.cjs',
     'presets': [
       [
@@ -146,11 +150,11 @@ Test('index.cjs { header: { exclude: \'...\' } }', async (test) => {
 
 })
 
-Test('index.js { header: { exclude: [ ... ] } }', async (test) => {
+Test('presets: [ index.cjs, { header: { exclude: [ ... ] } } ] on index.js', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
-    'babelrc': false,
+    'root': FolderPath,
     'filename': 'source/test/resource/index.js',
     'presets': [
       [
