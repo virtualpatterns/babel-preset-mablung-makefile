@@ -5,10 +5,11 @@ endif
 
 include $(mablung-makefile-path)
 
-ifndef current-folder
+ifndef current-build-folder
 
 pre-build::
-	$(if $(verbose),@echo update .... check.json and compile.json)
+	$(info - pre-build --------------------------------------)
+	$(if $(verbose),@echo update .... .eslintrc.json and babel.config.json)
 	@npx mablung-makefile update-configuration
 	
 endif

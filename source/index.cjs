@@ -17,7 +17,6 @@ module.exports = function (api, option) {
   //     },
   //     {
   //       "exclude": [
-  //         "source/header/"
   //       ],
   //       "plugins": [
   //         [
@@ -40,7 +39,7 @@ module.exports = function (api, option) {
 
   let exclude = null
   exclude = option.header?.exclude || []
-  exclude = Is.array(exclude) ? exclude : [exclude]
+  exclude = Is.array(exclude) ? exclude : [ exclude ]
 
   configuration.overrides[1].exclude = exclude
 
