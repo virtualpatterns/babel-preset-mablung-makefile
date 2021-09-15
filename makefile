@@ -8,7 +8,7 @@ include $(mablung-makefile-path)
 ifndef current-build-folder
 
 pre-build::
-	$(info - pre-build --------------------------------------)
+	$(info - pre-build ----------------------------)
 	$(if $(verbose),@echo update .... .eslintrc.json and babel.config.json)
 	@npx mablung-makefile update-configuration
 	
