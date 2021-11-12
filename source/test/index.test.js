@@ -10,14 +10,14 @@ const Require = CreateRequire(import.meta.url)
 const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('release/', 'source/')
 const SourceFolderPath = Path.dirname(SourceFilePath).replace('release/', 'source/')
 
-Test('presets: [ index.cjs ] on index.cjs using transformSync', (test) => {
+Test('presets: [ \'...\' ] on index.cjs using transformSync', (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'root': SourceFolderPath,
     'filename': `${SourceFolderPath}/index.cjs`,
     'presets': [
-      Require.resolve('../index.cjs')
+      Require.resolve('@virtualpatterns/babel-preset-mablung-makefile')
     ]
   }
 
@@ -48,14 +48,14 @@ Test('presets: [ index.cjs ] on index.cjs using transformSync', (test) => {
 
 })
 
-Test('presets: [ index.cjs ] on index.cjs using transformAsync', async (test) => {
+Test('presets: [ \'...\' ] on index.cjs using transformAsync', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'root': SourceFolderPath,
     'filename': `${SourceFolderPath}/index.cjs`,
     'presets': [
-      Require.resolve('../index.cjs')
+      Require.resolve('@virtualpatterns/babel-preset-mablung-makefile')
     ]
   }
 
@@ -86,14 +86,14 @@ Test('presets: [ index.cjs ] on index.cjs using transformAsync', async (test) =>
 
 })
 
-Test('presets: [ index.cjs ] on index.js', async (test) => {
+Test('presets: [ \'...\' ] on index.js', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
     'root': SourceFolderPath,
     'filename': `${SourceFolderPath}/index.js`,
     'presets': [
-      Require.resolve('../index.cjs')
+      Require.resolve('@virtualpatterns/babel-preset-mablung-makefile')
     ]
   }
 
@@ -117,7 +117,7 @@ Test('presets: [ index.cjs ] on index.js', async (test) => {
 
 })
 
-Test('presets: [ index.cjs, { header: { exclude: \'...\' } } ] on index.cjs', async (test) => {
+Test('presets: [ \'...\', { header: { exclude: \'...\' } } ] on index.cjs', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
@@ -125,7 +125,7 @@ Test('presets: [ index.cjs, { header: { exclude: \'...\' } } ] on index.cjs', as
     'filename': `${SourceFolderPath}/index.cjs`,
     'presets': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-preset-mablung-makefile'),
         {
           'header': {
             'exclude': `${SourceFolderPath}/index.cjs`
@@ -150,7 +150,7 @@ Test('presets: [ index.cjs, { header: { exclude: \'...\' } } ] on index.cjs', as
 
 })
 
-Test('presets: [ index.cjs, { header: { exclude: [ ... ] } } ] on index.js', async (test) => {
+Test('presets: [ \'...\', { header: { exclude: [ ... ] } } ] on index.js', async (test) => {
 
   let codeIn = 'export const OK = true'
   let option = {
@@ -158,7 +158,7 @@ Test('presets: [ index.cjs, { header: { exclude: [ ... ] } } ] on index.js', asy
     'filename': `${SourceFolderPath}/index.js`,
     'presets': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-preset-mablung-makefile'),
         {
           'header': {
             'exclude': [
@@ -172,6 +172,68 @@ Test('presets: [ index.cjs, { header: { exclude: [ ... ] } } ] on index.js', asy
 
   let { code: actualCodeOut } = await Babel.transformAsync(codeIn, option)
   let expectedCodeOut = 'export const OK = true;'
+
+  // test.log(actualCodeOut)
+  test.is(actualCodeOut, expectedCodeOut)
+
+})
+
+Test('presets: [ \'...\', { header: { content: \'...\' } } ] on index.js', async (test) => {
+
+  let codeIn = 'export const OK = true'
+  let option = {
+    'root': SourceFolderPath,
+    'filename': `${SourceFolderPath}/index.js`,
+    'presets': [
+      [
+        Require.resolve('@virtualpatterns/babel-preset-mablung-makefile'),
+        {
+          'header': {
+            'content': '...'
+          }
+        }
+      ]
+    ]
+  }
+
+  let { code: actualCodeOut } = await Babel.transformAsync(codeIn, option)
+  let expectedCodeOut = '/**\n' +
+                        '* ...\n' +
+                        '**/\n' +
+                        '\n' +
+                        'export const OK = true;'
+
+  // test.log(actualCodeOut)
+  test.is(actualCodeOut, expectedCodeOut)
+
+})
+
+Test('presets: [ \'...\', { header: { content: [ ... ] } } ] on index.js', async (test) => {
+
+  let codeIn = 'export const OK = true'
+  let option = {
+    'root': SourceFolderPath,
+    'filename': `${SourceFolderPath}/index.js`,
+    'presets': [
+      [
+        Require.resolve('@virtualpatterns/babel-preset-mablung-makefile'),
+        {
+          'header': {
+            'content': [
+              '...'
+            ]
+          }
+        }
+      ]
+    ]
+  }
+
+  let { code: actualCodeOut } = await Babel.transformAsync(codeIn, option)
+  let expectedCodeOut = '/**\n' +
+                        '* ...\n' +
+                        '**/\n' +
+                        '\n' +
+                        'export const OK = true;'
 
   // test.log(actualCodeOut)
   test.is(actualCodeOut, expectedCodeOut)
