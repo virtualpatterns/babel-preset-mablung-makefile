@@ -6,11 +6,12 @@ const Process = process
 Test('default', async (test) => {
 
   let unused = await Check(Process.cwd(), {
+    'ignoreMatches': [
+      '@virtualpatterns/mablung-makefile'
+    ],
     'parsers': {
       '**/*.cjs': [ Check.parser.es7.default ],
       '**/*.js': [ Check.parser.es7.default ]
-      // '**/*.cjs': [ Check.parser.es6, Check.parser.es7.default ],
-      // '**/*.js': [ Check.parser.es6, Check.parser.es7.default ]
     }
   })
 
