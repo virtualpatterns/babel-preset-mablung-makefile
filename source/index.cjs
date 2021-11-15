@@ -23,7 +23,7 @@ module.exports = function (api, option) {
   //           "babel-plugin-add-header-comment",
   //           {
   //              "header": [
-  //                "!node release/header/index.js"
+  //                "!node get-header.js"
   //              ]
   //            }
   //         ]
@@ -48,7 +48,7 @@ module.exports = function (api, option) {
   configuration.overrides[1].exclude = exclude
 
   let content = null
-  content = option.header?.content || [ '!npx --no-install --package @virtualpatterns/mablung-makefile mablung-makefile get-header' ]
+  content = option.header?.content || [ '!npx mablung-makefile get-header' ]
   content = Is.array(content) ? content : [ content ]
 
   configuration.overrides[1].plugins[0][1].header = content
