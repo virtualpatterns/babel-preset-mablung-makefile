@@ -7,8 +7,8 @@ import URL from 'url'
 import { Package } from './library/package.js'
 
 const Require = CreateRequire(import.meta.url)
-const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('release/', 'source/')
-const SourceFolderPath = Path.dirname(SourceFilePath).replace('release/', 'source/')
+const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('/release/', '/source/')
+const SourceFolderPath = Path.dirname(SourceFilePath).replace('/release/', '/source/')
 
 Test('presets: [ \'...\' ] on index.cjs using transformSync', (test) => {
 
