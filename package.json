@@ -7,7 +7,7 @@
   },
   "files": [
     "babel.config.json",
-    "release/index.cjs"
+    "release/index.*"
   ],
   "license": "GPL-3.0+",
   "main": "release/index.cjs",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
-    "@virtualpatterns/mablung-makefile": "0.0.26-137",
+    "@virtualpatterns/mablung-makefile": "0.0.26-144",
     "ava": "^3.15.0",
     "depcheck": "^1.4.2",
     "eslint-plugin-babel": "^5.3.1"
