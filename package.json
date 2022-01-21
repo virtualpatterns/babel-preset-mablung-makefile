@@ -19,17 +19,16 @@
   "type": "module",
   "version": "0.0.26-58",
   "dependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
+    "@babel/core": "^7.16.10",
+    "@babel/preset-env": "^7.16.11",
     "@pwn/is": "^1.0.2",
-    "babel-plugin-add-header-comment": "^1.0.3",
     "fs-extra": "^10.0.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.16.3",
-    "@virtualpatterns/mablung-makefile": "0.0.26-144",
-    "ava": "^3.15.0",
-    "depcheck": "^1.4.2",
+    "@babel/eslint-parser": "^7.16.5",
+    "@virtualpatterns/mablung-makefile": "0.0.26-153",
+    "ava": "^4.0.1",
+    "depcheck": "^1.4.3",
     "eslint-plugin-babel": "^5.3.1"
   }
 }

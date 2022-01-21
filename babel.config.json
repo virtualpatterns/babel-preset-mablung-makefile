@@ -14,22 +14,6 @@
           }
         ]
       ]
-    },
-    {
-      "exclude": [
-        "source/sandbox",
-        "source/test"
-      ],
-      "plugins": [
-        [
-          "babel-plugin-add-header-comment",
-          {
-            "header": [
-              "!node get-header.js"
-            ]
-          }
-        ]
-      ]
     }
   ]
 }
