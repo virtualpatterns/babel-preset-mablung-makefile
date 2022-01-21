@@ -9,7 +9,7 @@ ifndef current-build-folder
 
 pre-build::
 	$(info - pre-build ----------------------------)
-	$(if $(verbose),@echo update .... .eslintrc.json babel.config.json and get-header.js)
+	$(if $(verbose),@echo update .... .eslintrc.json and babel.config.json)
 	@npx mablung-makefile update
 	
 endif
