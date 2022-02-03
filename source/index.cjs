@@ -21,10 +21,8 @@ module.exports = function (api, option) {
   let path = Path.resolve(__dirname, '../babel.config.json')
   let configuration = FileSystem.readJsonSync(path, { 'encoding': 'utf-8' })
 
-  let packageName = null
-
   Assert.strictEqual(configuration.overrides[0].presets[0][0], '@babel/preset-env')
-  (packageName = configuration.overrides[0].presets[0][0]) = require(packageName)
+  configuration.overrides[0].presets[0][0] = require('@babel/preset-env')
 
   return configuration
 
