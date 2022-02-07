@@ -12,8 +12,8 @@ ifndef current-clean-folder
 
 pre-build::
 	$(info - pre-build ----------------------------)
-	$(if $(verbose),@echo update .... .eslintrc.json and babel.config.json)
-	@npx mablung-makefile update
+	$(if $(verbose),@echo copy .... babel.config.json)
+	@npx shx cp node_modules/@virtualpatterns/mablung-makefile/babel.config.json .
 	
 endif
 endif
