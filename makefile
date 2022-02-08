@@ -13,8 +13,8 @@ ifndef current-clean-folder
 pre-build::
 	$(info - pre-build ----------------------------)
 	$(if $(verbose),@echo copy .... .eslintrc.json and babel.config.json)
-	@npx shx cp node_modules/@virtualpatterns/mablung-makefile/.eslintrc.json .
-	@npx shx cp node_modules/@virtualpatterns/mablung-makefile/babel.config.json .
-	
+	@npx shx cp -u node_modules/@virtualpatterns/mablung-makefile/.eslintrc.json node_modules/@virtualpatterns/mablung-makefile/babel.config.json .
+	@$(MAKE) --no-print-directory commit message=post-pre-build
+
 endif
 endif
