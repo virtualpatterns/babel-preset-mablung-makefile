@@ -1,6 +1,5 @@
 const Assert = require('assert')
 const FileSystem = require('fs-extra')
-const Is = require('@pwn/is')
 const Path = require('path')
 
 module.exports = function (api, option) {
