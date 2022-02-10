@@ -19,13 +19,13 @@
   "type": "module",
   "version": "0.0.26-99",
   "dependencies": {
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.17.2",
     "@babel/preset-env": "^7.16.11",
     "fs-extra": "^10.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
-    "@virtualpatterns/mablung-makefile": "0.0.26-219",
+    "@virtualpatterns/mablung-makefile": "0.0.26-224",
     "ava": "^4.0.1",
     "depcheck": "^1.4.3",
     "eslint-plugin-babel": "^5.3.1"
