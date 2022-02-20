@@ -7,8 +7,8 @@
 
 include node_modules/@virtualpatterns/mablung-makefile/makefile
 
-ifndef current-build-folder
-ifndef current-clean-folder
+ifneq ($(is-building),true)
+ifneq ($(is-cleaning),true)
 
 pre-build::
 	$(info - pre-build ----------------------------)
