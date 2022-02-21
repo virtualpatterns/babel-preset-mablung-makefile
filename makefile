@@ -12,7 +12,7 @@ ifneq ($(is-cleaning),true)
 
 pre-build::
 	$(info - pre-build ----------------------------)
-	$(if $(verbose),@echo copy .... .eslintrc.json babel.config.json)
+	$(if $(is-verbose),@echo copy .... .eslintrc.json babel.config.json)
 	@npx shx cp -u node_modules/@virtualpatterns/mablung-makefile/.eslintrc.json node_modules/@virtualpatterns/mablung-makefile/babel.config.json .
 	@$(MAKE) --no-print-directory commit message=post-pre-build include-commit-item=".eslintrc.json babel.config.json"
 
