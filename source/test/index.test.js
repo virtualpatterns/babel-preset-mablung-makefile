@@ -1,65 +1,62 @@
-import { createRequire as CreateRequire } from 'module'
 import Babel from '@babel/core'
 import Path from 'path'
 import Test from 'ava'
 import URL from 'url'
 
-const Require = CreateRequire(import.meta.url)
+const ReleaseFolderPath = Path.dirname(URL.fileURLToPath(import.meta.url))
+const SourceFolderPath = ReleaseFolderPath.replace('/release/', '/source/')
 
-const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('/release/', '/source/')
-const SourceFolderPath = Path.dirname(SourceFilePath).replace('/release/', '/source/')
+// Test('index.cjs using transformSync', (test) => {
 
-Test('index.cjs using transformSync', (test) => {
+//   let codeIn = 'export const OK = true'
+//   let option = {
+//     'root': SourceFolderPath,
+//     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
+//     'presets': [
+//       '@virtualpatterns/babel-preset-mablung-makefile'
+//     ]
+//   }
 
-  let codeIn = 'export const OK = true'
-  let option = {
-    'root': SourceFolderPath,
-    'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
-    'presets': [
-      Require.resolve('@virtualpatterns/babel-preset-mablung-makefile')
-    ]
-  }
+//   let { code: actualCodeOut } = Babel.transformSync(codeIn, option)
+//   let expectedCodeOut = '"use strict";\n' +
+//                         '\n' +
+//                         'Object.defineProperty(exports, "__esModule", {\n' +
+//                         '  value: true\n' +
+//                         '});\n' +
+//                         'exports.OK = void 0;\n' +
+//                         'const OK = true;\n' +
+//                         'exports.OK = OK;'
 
-  let { code: actualCodeOut } = Babel.transformSync(codeIn, option)
-  let expectedCodeOut = '"use strict";\n' +
-                        '\n' +
-                        'Object.defineProperty(exports, "__esModule", {\n' +
-                        '  value: true\n' +
-                        '});\n' +
-                        'exports.OK = void 0;\n' +
-                        'const OK = true;\n' +
-                        'exports.OK = OK;'
+//   // test.log(actualCodeOut)
+//   test.is(actualCodeOut, expectedCodeOut)
 
-  // test.log(actualCodeOut)
-  test.is(actualCodeOut, expectedCodeOut)
+// })
 
-})
+// Test('index.cjs using transformAsync', async (test) => {
 
-Test('index.cjs using transformAsync', async (test) => {
+//   let codeIn = 'export const OK = true'
+//   let option = {
+//     'root': SourceFolderPath,
+//     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
+//     'presets': [
+//       '@virtualpatterns/babel-preset-mablung-makefile'
+//     ]
+//   }
 
-  let codeIn = 'export const OK = true'
-  let option = {
-    'root': SourceFolderPath,
-    'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
-    'presets': [
-      Require.resolve('@virtualpatterns/babel-preset-mablung-makefile')
-    ]
-  }
+//   let { code: actualCodeOut } = await Babel.transformAsync(codeIn, option)
+//   let expectedCodeOut = '"use strict";\n' +
+//                         '\n' +
+//                         'Object.defineProperty(exports, "__esModule", {\n' +
+//                         '  value: true\n' +
+//                         '});\n' +
+//                         'exports.OK = void 0;\n' +
+//                         'const OK = true;\n' +
+//                         'exports.OK = OK;'
 
-  let { code: actualCodeOut } = await Babel.transformAsync(codeIn, option)
-  let expectedCodeOut = '"use strict";\n' +
-                        '\n' +
-                        'Object.defineProperty(exports, "__esModule", {\n' +
-                        '  value: true\n' +
-                        '});\n' +
-                        'exports.OK = void 0;\n' +
-                        'const OK = true;\n' +
-                        'exports.OK = OK;'
+//   // test.log(actualCodeOut)
+//   test.is(actualCodeOut, expectedCodeOut)
 
-  // test.log(actualCodeOut)
-  test.is(actualCodeOut, expectedCodeOut)
-
-})
+// })
 
 Test('index.cjs', async (test) => {
 
@@ -68,21 +65,19 @@ Test('index.cjs', async (test) => {
     'root': SourceFolderPath,
     'filename': Path.resolve(SourceFolderPath, 'index.cjs'),
     'presets': [
-      [
-        Require.resolve('@virtualpatterns/babel-preset-mablung-makefile')
-      ]
+      '@virtualpatterns/babel-preset-mablung-makefile'
     ]
   }
 
   let { code: actualCodeOut } = await Babel.transformAsync(codeIn, option)
   let expectedCodeOut = '"use strict";\n' +
-    '\n' +
-    'Object.defineProperty(exports, "__esModule", {\n' +
-    '  value: true\n' +
-    '});\n' +
-    'exports.OK = void 0;\n' +
-    'const OK = true;\n' +
-    'exports.OK = OK;'
+                        '\n' +
+                        'Object.defineProperty(exports, "__esModule", {\n' +
+                        '  value: true\n' +
+                        '});\n' +
+                        'exports.OK = void 0;\n' +
+                        'const OK = true;\n' +
+                        'exports.OK = OK;'
 
   // test.log(actualCodeOut)
   test.is(actualCodeOut, expectedCodeOut)
@@ -96,7 +91,7 @@ Test('index.js', async (test) => {
     'root': SourceFolderPath,
     'filename': Path.resolve(SourceFolderPath, 'index.js'),
     'presets': [
-      Require.resolve('@virtualpatterns/babel-preset-mablung-makefile')
+      '@virtualpatterns/babel-preset-mablung-makefile'
     ]
   }
 
