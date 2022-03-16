@@ -17,7 +17,7 @@
     "url": "https://github.com/virtualpatterns/babel-preset-mablung-makefile"
   },
   "type": "module",
-  "version": "0.0.26-145",
+  "version": "0.0.26-146",
   "dependencies": {
     "@babel/core": "^7.17.7",
     "@babel/preset-env": "^7.16.11",
