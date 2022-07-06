@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.2",
-    "@virtualpatterns/mablung-makefile": "0.0.26-296",
+    "@virtualpatterns/mablung-makefile": "0.0.26-300",
     "ava": "^4.3.0",
     "depcheck": "^1.4.3",
     "eslint-plugin-babel": "^5.3.1"
